@@ -5,6 +5,7 @@ html {
     font-size: 62.5%;
     font-family: 'Raleway', sans-serif;
     min-height: 100%;
+    line-height: 1.2;
     @include box-sizing(border-box);
 }
 body {
@@ -25,3 +26,9 @@ a:hover {
     padding: 0 15px;
     max-width: 1018px;
 }
+h1 { font-size: 3.2rem;}
+h2 { font-size: 2.4rem;}
+h3 { font-size: 1.8rem;}
+h4 { font-size: 1.6rem;}
+h5 { font-size: 1.3rem;}
+h6 { font-size: 1.1rem;}
