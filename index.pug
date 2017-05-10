@@ -1,18 +1,29 @@
+//
+   Created by Don Le on 5/10/2017.
+block variables
+    -
+
 doctype html
 html(lang='en')
     head
         meta(charset='utf-8')
-        title Template Demo
+        title Nhuongve.vn
         meta(name='description', content='A front end test')
         meta(name='author', content='Don Le, Sutrix')
         meta(name='viewport', content='width=device-width, initial-scale=1.0, user-scalable=no')
         link(rel='stylesheet', href='css/style.css?v=1.0')
         //if lt IE 9
             script(src='https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js')
-    body.page-home
-        header
+    body(ng-class="page" ng-app='myApp' ng-controller='RootController')
+        include ./com/header
+        .page-content(ui-view)
+        include ./com/footer
+        script(src='./js/plugins/jquery-3.2.0.min.js')
+        script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
+        script(src='/bower_components/angular/angular.js')
+        script(src='/bower_components/angular-ui-router/release/angular-ui-router.js')
 
-        footer
-        //script(src='./js/plugins/jquery-3.2.0.min.js')
-        //script(src='./js/plugins/jquery-don-slider/dist/jquery.donslider.js')
-        //script(src='./js/main.js?v=05042017')
+        script(src='/js/main.js')
+        script(src='/js/controller/RootController.js')
+        script(src='/js/controller/SearchController.js')
+        script(src='/js/controller/PostTicketController.js')

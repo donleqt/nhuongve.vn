@@ -1,0 +1,161 @@
+
+<!--Created by Don Le on 5/10/2017.
+--><!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Nhuongve.vn</title>
+    <meta name="description" content="A front end test">
+    <meta name="author" content="Don Le, Sutrix">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/style.css?v=1.0">
+    <!--if lt IE 9script(src='https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js')
+    -->
+  </head>
+  <body class="page-post-ticket" ng-class="page" ng-app="myApp" ng-controller="RootController">
+    <header class="fixed">
+      <div class="container"><a class="site-logo" href="/" title="Trang chủ"><img class="v-middle" src="/img/logo.png"></a>
+        <div class="user"><img class="user-icon" src="/img/user.png"></div>
+        <ul class="navigation">
+          <li><a href="/search.html">Tìm vé</a></li>
+          <li><a class="active" href="/post-ticket.html">Đăng vé</a></li>
+          <li><a href="#">Liên hệ</a></li>
+          <li><a href="#">Trợ giúp</a></li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+    </header>
+    <div class="page-content" ui-view>
+      <div class="container no-padding">
+        <div class="heading-title">Đăng vé nhượng</div>
+        <hr>
+        <div class="widget ticket-filling-box">
+          <div class="widget-header">
+            <div class="title">Thông tin vé</div>
+          </div>
+          <div class="widget-content padding">
+            <form class="ticket-form row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Nơi đi</label>
+                  <input class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Nơi đến</label>
+                  <input class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Tên hành khách</label>
+                  <input class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Ngày đi</label>
+                  <input>
+                </div>
+                <div class="form-group ctrl-description">
+                  <label>Mô tả</label>
+                  <textarea class="form-control"></textarea>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Loại vé</label>
+                  <input class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Hãng vé<br><span>(Tuỳ chọn)</span></label>
+                  <input class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Đặc biệt<br><span>(Tuỳ chọn)</span></label>
+                  <input class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Giá</label>
+                  <input class="form-control">
+                </div>
+                <div class="form-group ctrl-image">
+                  <label>Hình ảnh</label><a class="img-container form-control" href="#">Chọn hình ảnh</a>
+                  <input class="hidden" type="file">
+                </div>
+                <div class="form-group">
+                  <div class="p-left"></div>
+                  <div class="p-right"><a class="button btn-primary hover-green" href="#">Đăng vé</a></div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade popup popup-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="popup-content"><a class="btn-close" href="javascript:void(0)" data-dismiss="modal" aria-hidden="true"></a>
+          <div class="popup-title">Đăng nhập</div>
+          <hr>
+          <form class="login-form">
+            <div class="form-group">
+              <label>Email:</label>
+              <input class="form-control" type="text" name="email">
+            </div>
+            <div class="form-group">
+              <label>Mật khẩu:</label>
+              <input class="form-control" type="text" name="password">
+            </div><a class="button btn-primary btn-login hover-green" href="javascript:void(0)">Đăng ký</a>
+            <div class="text-center"><a class="signup-invite" href="javascript:void(0)"> Bạn đã có tài khoản? <b>Đăng nhập ngay</b></a></div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade popup popup-signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="popup-content"><a class="btn-close" href="javascript:void(0)" data-dismiss="modal" aria-hidden="true"></a>
+          <div class="popup-title">Đăng ký</div>
+          <hr>
+          <form class="login-form">
+            <div class="form-group">
+              <label>Họ và tên:</label>
+              <input class="form-control" type="text" name="name">
+            </div>
+            <div class="form-group">
+              <label>Email:</label>
+              <input class="form-control" type="text" name="email">
+            </div>
+            <div class="form-group">
+              <label>Mật khẩu:</label>
+              <input class="form-control" type="text" name="password">
+              <div class="text-right"><a class="link-forget-pass" href="javascript:void(0)">Quên mật khẩu?</a></div>
+            </div><a class="button btn-primary btn-login hover-green" href="javascript:void(0)">Đăng nhập</a>
+            <div class="text-center"><a class="signup-invite" href="javascript:void(0)"> Chưa có tài khoản? <b>Đăng ký ngay</b></a></div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="site-logo"><img src="/img/logo-white.png"></div>
+          </div>
+          <div class="col-sm-6">
+            <div class="info">Trường Đại học Khoa học tự nhiên, Đại học quốc gia TP. HCM.
+              <br/>Đồ án môn khoa học web, thực hiện bởi Eagle eyes.
+              <br/>SĐT: +84988717482
+              <br/>Email: donleqt@gmail.com
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="social"><a href="#"><i class="fa fa-facebook-f"></i></a><a href="#"><i class="fa fa-youtube-play"></i></a></div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="./js/plugins/jquery-3.2.0.min.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/controller/RootController.js"></script>
+    <script src="/js/controller/SearchController.js"></script>
+    <script src="/js/controller/PostTicketController.js"></script>
+  </body>
+</html>
