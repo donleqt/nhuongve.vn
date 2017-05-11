@@ -157,9 +157,28 @@ myApp.controller('RootController', function ($scope, $state, $rootScope, $http) 
             }
         });
     };
+    var back_to_top = function () {
+        // Show or hide the sticky footer button
+        console.log($('.go-top'));
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $('.go-top').fadeIn(200);
+            } else {
+                $('.go-top').fadeOut(200);
+            }
+        });
+        // Animate the scroll to top
+        $('.go-top').click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        });
+    };
+    back_to_top();
     initHeader();
     helper.init();
-
+    toastr.options = {
+        "timeOut": "1000"
+    };
     /**
      * Angular
      */
@@ -205,6 +224,7 @@ myApp.controller('RootController', function ($scope, $state, $rootScope, $http) 
 
                     root.user = root.users[data.email];
                     $('.popup-login').modal('hide');
+                    toastr.success('Đăng nhập thành công!');
                 }
                 else {
                     root.loginError = 'Sai mật khẩu!';

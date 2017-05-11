@@ -65,6 +65,7 @@ myApp.controller('SearchController', function ($scope, $state, $rootScope, $http
                 });
         }
         else {
+            toastr.warning('Bạn cần đăng nhập để thực hiện đặt vé.');
             rvm.openLogin();
         }
     };

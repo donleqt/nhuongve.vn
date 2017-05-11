@@ -7,6 +7,7 @@
 @import url(../bower_components/font-awesome/css/font-awesome.css);
 @import url(../bower_components/rome/dist/rome.css);
 @import url(../bower_components/sweetalert/dist/sweetalert.css);
+@import url(../bower_components/toastr/toastr.css);
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700");
 html {
   font-family: sans-serif;
@@ -6610,6 +6611,24 @@ hr {
 .rd-day-body {
   padding: 5px; }
 
+.go-top {
+  position: fixed;
+  bottom: 2em;
+  right: 2em;
+  text-decoration: none;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 0.7em 1em;
+  display: none;
+  border-radius: 4px;
+  z-index: 100; }
+
+.go-top i.fa {
+  font-size: 2em; }
+
+.go-top:hover {
+  background-color: rgba(0, 0, 0, 0.6); }
+
 footer {
   margin-top: 70px;
   padding: 35px 0;
@@ -6791,10 +6810,9 @@ header {
   top: 15px; }
 
 .popup .popup-content {
-  margin-top: 100px;
   background: #ffffff;
   width: 530px;
-  margin: auto;
+  margin: 60px auto 0;
   position: relative;
   padding: 15px; }
 
