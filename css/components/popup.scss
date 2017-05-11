@@ -1,0 +1,72 @@
+.popup {
+    .btn-close {
+        width: 25px;
+        height: 25px;
+        background-image: url('/img/btn-close.png');
+        background-size: 100% 100%;
+        position: absolute;
+        right: 15px;
+        top:15px;
+    }
+    .popup-content {
+        margin-top: 100px;
+        background: #ffffff;
+        width: 530px;
+        margin: auto;
+        position: relative;
+        padding: 15px;
+
+    }
+    label {
+        display: block;
+        font-weight: 600;
+    }
+    input {
+        border-radius: 0;
+        width: 100%;
+        height: 40px;
+    }
+    .popup-title {
+        font-size: 28px;
+        font-weight: 600;
+        text-align: center;
+    }
+    .form-group {
+        margin-bottom:20px;
+    }
+
+}
+.popup-overplay {
+    position: fixed;
+    z-index: 1500;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.4);
+
+}
+
+.popup-login,.popup-signup   {
+    .popup-content{
+        padding: 45px 80px ;
+    }
+    .login-form {
+        margin-top: 35px;
+    }
+    .link-forget-pass {
+        display: inline-block;
+        padding-top:7px;
+        color: $primary;
+    }
+    .btn-login,.btn-signup {
+        display: block;
+        height: 50px;
+        line-height: 50px;
+        padding:0;
+    }
+    .signup-invite,.login-invite {
+        padding-top:7px;
+        display: inline-block;
+    }
+}

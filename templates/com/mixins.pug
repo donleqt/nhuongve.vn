@@ -1,0 +1,21 @@
+mixin search-box()
+    form.search-box
+        .input-group
+            .addon-icon
+                img(src='/img/ic-location.png')
+            select.form-control#from(placehoder='Nhập điểm đi' name='from')
+                option(disabled='', selected='', value="-1") Chọn điểm đi
+                option(value='') --Tất cả--
+                option(ng-repeat="city in locations" value="{{$index}}") {{city.name}}
+        .input-group
+            .addon-icon
+                img(src='/img/ic-location.png')
+            select.form-control#to(placehoder='Nhập điểm đến' name='to')
+                option(disabled='', selected='', value="-1") Chọn điểm đến
+                option(value='') --Tất cả--
+                option(ng-repeat="city in locations" value="{{$index}}") {{city.name}}
+        .input-group
+            .addon-icon
+                img(src='/img/ic-calendar.png')
+            input#timePicker.form-control(placeholder='Chọn ngày', name='date')
+        a.button.btn-green.btn-search(href='javascript:void(0)', ng-click='search()') Tìm kiếm

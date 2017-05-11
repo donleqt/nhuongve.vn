@@ -1,8 +1,11 @@
+//Plugins
+@import "../bower_components/bootstrap/dist/css/bootstrap";
+@import "../bower_components/font-awesome/css/font-awesome.css";
+@import "../bower_components/rome/dist/rome.css";
+@import "../bower_components/sweetalert/dist/sweetalert.css";
+
 //Mixin
 @import "components/mixin";
-
-//Elements
-@import "components/elements";
 
 //Global
 @import "global";
@@ -11,7 +14,10 @@
 @import "components/footer";
 @import "components/header";
 @import "components/blocks";
+@import "components/popup";
 
 //Page
 @import "pages/home";
+@import "pages/post-ticket";
+@import "pages/search";
 

@@ -1,3 +1,58 @@
-//
-   Created by Don Le on 5/10/2017.
+.modal.fade.popup.popup-login(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+    .modal-dialog
+        form.popup-content#loginForm(ng-submit='login()')
+            a.btn-close(href='javascript:void(0)', data-dismiss="modal" aria-hidden="true")
+            .popup-title Đăng nhập
+            hr
+            h3.form-group.text-center.text-danger(ng-if='loginError') {{loginError}}
+            form.login-form
+                .form-group
+                    label Email:
+                    input.form-control(type='text', name='email')
+                .form-group
+                    label Mật khẩu:
+                    input.form-control(type='password', name='password')
+                    .text-right
+                        a.link-forget-pass(href='javascript:void(0)') Quên mật khẩu?
+                a.button.btn-primary.btn-login.hover-green(href='javascript:void(0)' ng-click="login();") Đăng nhập
+                button.hidden(type="submit")
+                .text-center
+                    a.signup-invite(href='javascript:void(0)')  Chưa có tài khoản? <b>Đăng ký ngay</b>
+.modal.fade.popup.popup-signup(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+    .modal-dialog
+        .popup-content
+            a.btn-close(href='javascript:void(0)', data-dismiss="modal" aria-hidden="true")
+            .popup-title Đăng ký
+            hr
+            form.login-form
+                .form-group
+                    label Họ và tên:
+                    input.form-control(type='text', name='name')
+                .form-group
+                    label Email:
+                    input.form-control(type='text', name='email')
+                .form-group
+                    label Mật khẩu:
+                    input.form-control(type='text', name='password')
+                a.button.btn-primary.btn-signup.hover-green(href='javascript:void(0)') Đăng ký
+                .text-center
+                    a.login-invite(href='javascript:void(0)')  Bạn đã có tài khoản? <b>Đăng nhập ngay</b>
+footer
+    .container
+        .row
+            .col-sm-4
+                .site-logo
+                     img(src='/img/logo-white.png')
+            .col-sm-6
+                .info Trường Đại học Khoa học tự nhiên, Đại học quốc gia TP. HCM.
+                    | <br/>Đồ án môn khoa học web, thực hiện bởi Eagle eyes.
+                    | <br/>SĐT: +84988717482
+                    | <br/>Email: donleqt@gmail.com
+            .col-sm-2
+                .social
+                    a(href='#')
+                        i.fa.fa-facebook-f
+                    a(href='#')
+                        i.fa.fa-youtube-play
+
 

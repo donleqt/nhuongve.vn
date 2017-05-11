@@ -1,0 +1,84 @@
+include templates/com/mixins
+block content
+    .page-search
+        .top-bg-wrapper
+            .container
+                +search-box()
+        .container.no-padding
+            .result-section
+                .result-overview
+                    .number-of-result(ng-if="results!=null") Tìm thấy <strong>{{results.length}}</strong> kết quả
+                    .number-of-result.text-center(ng-if="results==null", style='width:100%') Chọn điều kiện và nhấn nút tìm kiếm.
+                    a.btn-filter.hover-op(href="javascript:void(0)" ng-click="toggleFilterBox()" ng-if="results!=null")
+                        i.fa.fa-filter
+                        | Bộ lọc
+                    .clearfix
+                .filter-box(style='display:none;')
+                    .filter-group
+                        .filter-label Loại vé
+                        .radio
+                            label
+                                input(type='radio', name="ticketType", checked)
+                                | Tất cả
+                        .radio
+                            label
+                                input(type='radio', name="ticketType")
+                                | Máy bay
+                        .radio
+                            label
+                                input(type='radio', name="ticketType")
+                                | Tàu hoả
+                        .radio
+                            label
+                                input(type='radio', name="ticketType")
+                                | Xe khách
+                    .filter-group
+                        .filter-label Giờ đi
+                        .radio
+                            label
+                                input(type='radio', name="time", checked)
+                                | Tất cả
+                        .radio
+                            label
+                                input(type='radio', name="time")
+                                | Sáng
+                        .radio
+                            label
+                                input(type='radio', name="time")
+                                | Chiều
+                        .radio
+                            label
+                                input(type='radio', name="time")
+                                | Tối
+                    .filter-group.horizontal-form
+                        .filter-label Giá
+                        .form-group
+                            label Tối thiểu
+                            input(type='number', min='0')
+                        .form-group
+                            label Tối đa
+                            input(type='number', min='0')
+                    a.btn.btn-default(href='javascript:void(0);') Mặc định
+                table.ticket-table
+                    thead
+                        tr
+                            th STT
+                            th.col-location Nơi đi
+                            th.col-location Nơi đến
+                            th.col-date Ngày đi
+                            th.col-ticket-type Loại vé
+                            th.col-special Đặc biệt
+                            th.col-price Giá
+                            th Hành động
+                    tbody
+                        tr(ng-repeat='ticket in results track by $index', ng-class="{'blocked':ticket.sold}" )
+                            td {{$index + 1}}
+                            td {{ticket.from}}
+                            td {{ticket.to}}
+                            td {{ticket.begin_hour}} <br/>{{ticket.begin_date}}
+                            td {{ticket.transporter}} <br/> {{ticket.carrier}}
+                            td {{ticket.tags}}
+                            td {{beautyNumber(ticket.price)}}
+                            td
+                                a.button.btn-small.btn-primary(href='javascript:void(0)' ng-click="quickBook(ticket)") {{ticket.sold? 'Đã dặt' : 'Đặt nhanh' }}
+                .no-result(ng-if="results.length === 0") Không tìm thấy vé nào phù hợp

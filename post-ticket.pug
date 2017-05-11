@@ -1,0 +1,52 @@
+block content
+    .heading-title(ng-if='!user') Vui lòng đăng nhập
+    .page-post-ticket(ng-if='user')
+        .container.no-padding
+            .heading-title Đăng vé nhượng
+            hr
+            .widget.ticket-filling-box
+                .widget-header
+                    .title Thông tin vé
+                .widget-content.padding
+                    form.ticket-form.row
+                        .col-sm-6
+                            .form-group
+                                label Nơi đi
+                                input.form-control
+                            .form-group
+                                label Nơi đến
+                                input.form-control
+                            .form-group
+                                label Tên hành khách
+                                input.form-control
+                            .form-group
+                                label Ngày đi
+                                input
+                            .form-group.ctrl-description
+                                label Mô tả
+                                textarea.form-control
+                        .col-sm-6
+                            .form-group
+                                label Loại vé
+                                input.form-control
+                            .form-group
+                                label Hãng vé
+                                    br
+                                    span (Tuỳ chọn)
+                                input.form-control
+                            .form-group
+                                label Đặc biệt
+                                    br
+                                    span (Tuỳ chọn)
+                                input.form-control
+                            .form-group
+                                label Giá
+                                input.form-control
+                            .form-group.ctrl-image
+                                label Hình ảnh
+                                a.img-container.form-control(href='#') Chọn hình ảnh
+                                input.hidden(type='file')
+                            .form-group
+                                .p-left
+                                .p-right
+                                    a.button.btn-primary.hover-green(href='#') Đăng vé

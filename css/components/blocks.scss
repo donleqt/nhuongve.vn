@@ -1,0 +1,75 @@
+.search-box {
+    padding: 20px 0;
+    text-align: center;
+    background-color: rgba(255,255,255,0.22);
+    border-radius: 3px;
+
+    .btn-search {
+        color: #ffffff;
+    }
+    .input-group {
+        width: 240px;
+        background: #ffffff;
+        display: inline-block;
+        vertical-align: bottom;
+        position: relative;
+        height: 42px;
+        margin-right: 10px;
+        &:last-child {
+            margin-right: 0;
+        }
+        .addon-icon {
+            width: 50px;
+            height: 42px;
+            position: absolute;
+            text-align: center;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 10;
+            img {
+                position: relative;
+                @include transform(translateY(-50%));
+                top: 50%;
+                width: 20px;
+            }
+            & + input, & + .form-control {
+                padding-right: 50px;
+            }
+        }
+    }
+    .input-group-addon {
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+    }
+    .button {
+        padding: 0;
+        height: 45px;
+        width:150px;
+        line-height: 45px;
+    }
+    select {
+        @extend .clean-control;
+    }
+    input, .form-control {
+        border-radius: 0;
+        height: 100%;
+        font-size: 16px;
+    }
+}
+
+.widget {
+    background-color: #ffffff;
+    .widget-header {
+        padding: 15px;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        .title {
+            font-size: 22px;
+            font-weight: 600;
+        }
+    }
+    .widget-content {
+        background-color: #ffffff;
+    }
+}

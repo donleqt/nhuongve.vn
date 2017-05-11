@@ -1,3 +1,18 @@
-//
-   Created by Don Le on 5/10/2017.
-
+header.fixed
+    .container
+        a.site-logo(href='/', title='Trang chủ')
+            img.v-middle(src='/img/logo.png')
+        .user.hover-op(ng-click='openLogin()', ng-if="!user")
+            img.user-icon(src='/img/user.png',)
+        .user.hover-op( ng-if="user" title="{{user.name}}")
+            img.user-icon( ng-src='{{user.avatar}}')
+        ul.navigation
+            li
+                a(href='/#/search', ui-sref="search", ui-sref-active="active") Tìm vé
+            li
+                a(href='/#/post-ticket', ui-sref="post_ticket", ui-sref-active="active" ) Đăng vé
+            li
+                a(href='#') Liên hệ
+            li
+                a(href='#') Trợ giúp
+        .clearfix

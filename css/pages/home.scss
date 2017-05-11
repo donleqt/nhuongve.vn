@@ -1,3 +1,156 @@
-.homePage {
-    
+.page-home {
+    .introduction {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/img/top-bg.png');
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+        height: 480px;
+        position: relative;
+        padding: 10px;
+        hr {
+            margin: 30px auto;
+            width: 80px;
+            color: #ffffff;
+        }
+        .title {
+            margin-top: 100px;
+            color: #ffffff;
+            font-size: 48px;
+            font-weight: 100;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+        .purpose {
+            color: #ffffff;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+    }
+
+    .showoff {
+        background-color: #ffffff;
+        text-align: center;
+        .heading-title {
+            color: #333;
+        }
+        .facts-list {
+            margin: 75px 0 80px;
+        }
+        .text1 {
+            font-size: 18px;
+            color: #888888;
+            line-height: 25px;
+            font-style: italic;
+        }
+        .fact-item {
+            width: 150px;
+            margin-right: 150px;
+            text-align: center;
+            display: inline-block;
+            &:last-child {
+                margin-right: 0;
+            }
+            .avatar {
+                margin: auto;
+                width: 130px;
+                img {
+                    @extend .img-responsive;
+                }
+            }
+
+            > *:nth-child(2) {
+                letter-spacing: 0.5px;
+                font-size: 40px;
+                color: $primary;
+                margin-top: 20px;
+                line-height: 48px;
+                margin-bottom: 5px;
+                font-weight: 600;
+            }
+            > *:nth-child(3) {
+                color: #666666;
+                font-size: 18px;
+                line-height: 22px;
+                font-weight: 100;
+            }
+        }
+    }
+    .manuals {
+        color: #ffffff;
+        background-color: $green;
+        .heading-title {
+            color: #ffffff;
+        }
+        .text2 {
+            font-size: 18px;
+            color: #ffffff;
+            line-height: 25px;
+            text-align: center;
+        }
+        .manuals-video {
+            margin:45px auto 50px;
+            text-align: center;
+            max-width: 750px;
+            img {
+                width: 100%;
+            }
+        }
+    }
+    .reviews {
+        color: #333;
+        background-color: #fff;
+        text-align: center;
+        padding-bottom: 30px;
+        .heading-title {
+            color: #333;
+        }
+        .current-review {
+            margin-top:40px;
+            font-size: 20px;
+
+        }
+        .author {
+            color: $primary;
+            font-size: 22px;
+        }
+        .qoute {
+            margin-top:25px;
+            line-height: 30px;
+            font-size: 18px;
+            color: #888888;
+        }
+        .users {
+            margin-top: 40px;
+            margin-bottom: 55px;
+        }
+        .person {
+            margin-right:45px;
+            opacity: 0.4;
+            @include transition(opacity 0.1s ease-in);
+            &.active {
+                opacity: 1;
+            }
+            &:hover {
+                opacity: 1;
+                & ~ .active {
+                    opacity: 0.4;
+                }
+            }
+            img {
+                border-radius: 100%;
+                width: 100px;
+                height: 100px;
+            }
+            &:last-child{
+                margin-right: 0;
+            }
+        }
+    }
+    footer {
+        margin-top: 0;
+    }
 }
+
+

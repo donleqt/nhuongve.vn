@@ -1,64 +1,53 @@
+include templates/com/mixins
 block content
-    section.introduction
-        .container
-            .title Chúng tôi giúp bạn
-            .purpose Nhượng vé tàu, xe, máy bay - đơn giản - tiện lợi. Mua vé nhượng giá rẻ dễ dàng
-            hr.lighter
-            .search-box
-                .input-group
-                    .addon-icon
-                        img(src='/img/ic-location.png')
-                    input.form-control(placeholder='Nhập điểm đi')
-                .input-group
-                    .addon-icon
-                        img(src='/img/ic-location.png')
-                    input.form-control(placeholder='Nhập điểm đến')
-                .input-group
-                    .addon-icon
-                        img(src='/img/ic-calendar.png')
-                    input.form-control(placeholder='Chọn ngày')
-                .button.btn-green Tìm kiếm
-    section.showoff
-        .container
-            .heading-title Tài nguyên
-            hr
-            .text1 Với số lượng thành viên lên đến hàng ngàn người, cùng kho dữ liệu vé khổng lồ.
-                | <br/> Nhuongve.vn đang là cộng đồng trao đổi vé lớn nhất Việt Nam
-            .facts-list
-                .fact-item
-                    div.avatar
-                        img(src='/img/user-check.png')
-                    p 2.325
-                    p Thành viên
-                .fact-item
-                    div.avatar
-                        img(src='/img/tag.png')
-                    p 4.000
-                    p Vé nhượng
-                .fact-item
-                    div.avatar
-                        img(src='/img/note-check.png')
-                    p 1.124
-                    p Đã trao đổi
-    section.manuals
-        .container
-            .heading-title Hướng dẫn
-            hr.lighter
-            .text2 Cùng xem cách trao đổi vé dễ dàng. Chỉ vài bước đơn giản
-                | <br/> bạn đã nắm bắt hết !
-            .manuals-video
-                img(src='/img/video-holder.png', alt='Manual video')
-    section.reviews
-        .container
-            .heading-title Đánh giá
-            hr
-            .current-review
-                .author Lê Quý Đôn
-                .qoute "Nhuongve.vn thật tiện lợi, không có nơi đâu giúp tôi sang lại vé dễ dàng đến như thế !"
-                .users
-                    a.person.active(href='#')
-                        img(src='http://i.pravatar.cc/300?img=1')
-                    a.person(href='#')
-                        img(src='http://i.pravatar.cc/300?img=2')
-                    a.person(href='#')
-                        img(src='http://i.pravatar.cc/300?img=3')
+    .page-home
+        section.introduction
+            .container
+                .title Chúng tôi giúp bạn
+                .purpose Nhượng vé tàu, xe, máy bay - đơn giản - tiện lợi. Mua vé nhượng giá rẻ dễ dàng
+                hr.lighter
+                +search-box()
+        section.showoff
+            .container
+                .heading-title Tài nguyên
+                hr
+                .text1 Với số lượng thành viên lên đến hàng ngàn người, cùng kho dữ liệu vé khổng lồ.
+                    | <br/> Nhuongve.vn đang là cộng đồng trao đổi vé lớn nhất Việt Nam
+                .facts-list
+                    .fact-item
+                        div.avatar
+                            img(src='/img/user-check.png')
+                        p 2.325
+                        p Thành viên
+                    .fact-item
+                        div.avatar
+                            img(src='/img/tag.png')
+                        p 4.000
+                        p Vé nhượng
+                    .fact-item
+                        div.avatar
+                            img(src='/img/note-check.png')
+                        p 1.124
+                        p Đã trao đổi
+        section.manuals
+            .container
+                .heading-title Hướng dẫn
+                hr.lighter
+                .text2 Cùng xem cách trao đổi vé dễ dàng. Chỉ vài bước đơn giản
+                    | <br/> bạn đã nắm bắt hết !
+                .manuals-video
+                    img(src='/img/video-holder.png', alt='Manual video')
+        section.reviews
+            .container
+                .heading-title Đánh giá
+                hr
+                .current-review
+                    .author Lê Quý Đôn
+                    .qoute "Nhuongve.vn thật tiện lợi, không có nơi đâu giúp tôi sang lại vé dễ dàng đến như thế !"
+                    .users
+                        a.person.active(href='#')
+                            img(src='http://i.pravatar.cc/300?img=1')
+                        a.person(href='#')
+                            img(src='http://i.pravatar.cc/300?img=2')
+                        a.person(href='#')
+                            img(src='http://i.pravatar.cc/300?img=3')

@@ -10,6 +10,13 @@
     -moz-box-sizing: $value;
     box-sizing: $value;
 }
+@mixin transition($value) {
+    -webkit-transition: $value;
+    -moz-transition: $value ;
+    -ms-transition: $value ;
+    -o-transition: $value ;
+    transition: $value ;
+}
 @mixin breakpoint($min: 0, $max: 0) {
     $type: type-of($min);
     @if $type == string {

@@ -1,0 +1,30 @@
+{
+  "name": "Nhuongve.vn",
+  "description": "Do an mon thiet ke giao dien",
+  "main": "index.html",
+  "authors": [
+    "DESKTOP-Q6EAHGS\\Don Le <donleqt@gmail.com>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "nhuongve"
+  ],
+  "homepage": "https://github.com/donleqt/front-end-base",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "boostrap#^3.3.7",
+    "jquery-validation": "^1.16.0",
+    "jquery": "^3.2.1",
+    "sweetalert": "^1.1.3",
+    "rome": "^2.1.22",
+    "angular-ui-router": "^1.0.3",
+    "font-awesome": "^4.7.0"
+  }
+}
