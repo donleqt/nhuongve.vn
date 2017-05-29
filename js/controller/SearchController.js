@@ -9,6 +9,12 @@ myApp.controller('SearchController', function ($scope, $state, $rootScope, $http
      */
     var vm = $scope;
     var rvm = $rootScope;
+    var defaultFilter = {
+        minPrice: '',
+        maxPrice: '',
+        time: 'all',
+        ticketType: 'all'
+    };
     vm.preset = null;
     vm.beautyNumber = helper.beautyNumber;
     rvm.page = 'page-search';
@@ -30,7 +36,34 @@ myApp.controller('SearchController', function ($scope, $state, $rootScope, $http
                 vm.$apply();
             });
     };
+    vm.resetResult  = function () {
+        if (vm.applyFilter.list) {
+            vm.results = vm.applyFilter.list;
+            vm.applyFilter.list = null;
+        }
+    };
     vm.results = null;
+    vm.applyFilter = function () {
+        vm.resetResult();
+        var filter = $('.filter-box').serializeObject();
+        vm.applyFilter.list = vm.results;
+        vm.results =  vm.results.filter(function (ticket,idz) {
+            if (filter.ticketType !== 'all' && filter.ticketType !== ticket.transporter) {
+                return false;
+            }
+            if ((filter.maxPrice && parseInt(filter.maxPrice) < parseInt(ticket.price)) ||  (filter.minPrice && parseInt(filter.minPrice) > parseInt(ticket.price))) {
+                return false;
+            }
+            return true;
+        });
+    };
+    vm.resetFilterBox = function () {
+        $('.filter-box').formApply(defaultFilter);
+        if (vm.applyFilter.list) {
+            vm.results = vm.applyFilter.list;
+            vm.applyFilter.list = null;
+        }
+    };
     vm.toggleFilterBox = function () {
         var target = $('.filter-box');
         var opt = {
@@ -45,7 +78,7 @@ myApp.controller('SearchController', function ($scope, $state, $rootScope, $http
         }
     };
     vm.search = function () {
-        doSearchAndFilter($('.search-box').serializeObject())
+        doSearchAndFilter($('.search-box').serializeObject());
     };
     vm.quickBook = function (ticket) {
         if (rvm.user) {

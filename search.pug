@@ -13,52 +13,54 @@ block content
                         i.fa.fa-filter
                         | Bộ lọc
                     .clearfix
-                .filter-box(style='display:none;')
+                form.filter-box(style='display:none;')
                     .filter-group
                         .filter-label Loại vé
                         .radio
                             label
-                                input(type='radio', name="ticketType", checked)
+                                input(type='radio', value='all' name="ticketType", checked)
                                 | Tất cả
                         .radio
                             label
-                                input(type='radio', name="ticketType")
+                                input(type='radio', value='Máy bay' name="ticketType")
                                 | Máy bay
                         .radio
                             label
-                                input(type='radio', name="ticketType")
+                                input(type='radio', value='Tàu hoả' name="ticketType")
                                 | Tàu hoả
                         .radio
                             label
-                                input(type='radio', name="ticketType")
+                                input(type='radio', value='Xe khách' name="ticketType")
                                 | Xe khách
                     .filter-group
                         .filter-label Giờ đi
                         .radio
                             label
-                                input(type='radio', name="time", checked)
+                                input(type='radio', name="time" value="all", checked)
                                 | Tất cả
                         .radio
                             label
-                                input(type='radio', name="time")
+                                input(type='radio', name="time" value="1")
                                 | Sáng
                         .radio
                             label
-                                input(type='radio', name="time")
+                                input(type='radio', name="time" value="2")
                                 | Chiều
                         .radio
                             label
-                                input(type='radio', name="time")
+                                input(type='radio', name="time" value="3")
                                 | Tối
                     .filter-group.horizontal-form
                         .filter-label Giá
                         .form-group
                             label Tối thiểu
-                            input(type='number', min='0')
+                            input.form-control(type='number', min='0' name="minPrice")
                         .form-group
                             label Tối đa
-                            input(type='number', min='0')
-                    a.btn.btn-default(href='javascript:void(0);') Mặc định
+                            input.form-control(type='number', min='0' name="maxPrice")
+                    .buttons
+                        a.button.btn-reset(href='javascript:void(0);' ng-click="resetFilterBox()") Về mặc định
+                        a.button.btn-primary.hover-green(href='javascript:void(0);' ng-click="applyFilter()") Áp dụng
                 table.ticket-table
                     thead
                         tr

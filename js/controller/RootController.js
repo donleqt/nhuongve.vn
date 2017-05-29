@@ -133,7 +133,7 @@ var helper = {
         return formatedDate;
     },
     beautyNumber: function (number) {
-        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return number ? number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : '';
 
     }
 };
@@ -177,7 +177,7 @@ myApp.controller('RootController', function ($scope, $state, $rootScope, $http) 
     initHeader();
     helper.init();
     toastr.options = {
-        "timeOut": "1000"
+        "timeOut": "2000"
     };
     /**
      * Angular
@@ -218,13 +218,10 @@ myApp.controller('RootController', function ($scope, $state, $rootScope, $http) 
         root.loginError='';
         if (data.email) {
             if (root.users[data.email]) {
-                console.log(root.users[data.email]);
-                console.log(data.password);
                 if (root.users[data.email].password === data.password) {
-
                     root.user = root.users[data.email];
                     $('.popup-login').modal('hide');
-                    toastr.success('Đăng nhập thành công!');
+                    toastr.success('Chào '+root.user.name+', bạn đã đăng nhập thành công!');
                 }
                 else {
                     root.loginError = 'Sai mật khẩu!';

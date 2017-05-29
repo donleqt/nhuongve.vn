@@ -1,13 +1,13 @@
 [
   {
     "name": "Lê Quý Đôn",
-    "avatar": "http://i.pravatar.cc/100?u=dondon",
+    "avatar": "/img/user1.jpg",
     "email": "donleqt@gmail.com",
     "password": "dondon"
   },
   {
     "name": "Nguyễn Quốc Đạt",
-    "avatar": "http://i.pravatar.cc/100?u=datquoc",
+    "avatar": "/img/user2.jpg",
     "email": "datnguyen@gmail.com",
     "password": "dondon"
   }

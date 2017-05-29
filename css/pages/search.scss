@@ -60,14 +60,22 @@
             color: #666666;
             font-size: 14px;
         }
-        .btn-default {
+        .buttons {
             float: right;
-            width: 150px;
-            border-radius: 0;
-            background: #E6E6E6;
-            border: 0;
-            &:hover {
-                background-color: #D6D6D6;
+            .button {
+                width: 180px;
+                font-size: 14px;
+                border-radius: 0;
+                border: 0;
+
+                &.btn-reset {
+                    margin-right: 10px;
+                    background: #E6E6E6;
+                    &:hover {
+                        background-color: #D6D6D6;
+                    }
+                }
+
             }
         }
     }
