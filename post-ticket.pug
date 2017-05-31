@@ -1,6 +1,6 @@
 block content
-    .heading-title(ng-if='!user') Vui lòng đăng nhập
-    .page-post-ticket(ng-if='user')
+    .heading-title(ng-show='!user') Vui lòng đăng nhập
+    .page-post-ticket(ng-show='user')
         .container.no-padding
             .heading-title Đăng vé nhượng
             hr
@@ -8,45 +8,45 @@ block content
                 .widget-header
                     .title Thông tin vé
                 .widget-content.padding
-                    form.ticket-form.row
+                    form.ticket-form.row#ticketForm
                         .col-sm-6
                             .form-group
                                 label Nơi đi
-                                input.form-control
+                                input.form-control(name='from')
                             .form-group
                                 label Nơi đến
-                                input.form-control
+                                input.form-control(name='to')
                             .form-group
                                 label Tên hành khách
-                                input.form-control
+                                input.form-control(name='passenger')
                             .form-group
                                 label Ngày đi
-                                input
+                                input.form-control(name='begin_date')
                             .form-group.ctrl-description
                                 label Mô tả
-                                textarea.form-control
+                                    br
+                                    span (Tuỳ chọn)
+                                textarea.form-control(name='description')
                         .col-sm-6
                             .form-group
                                 label Loại vé
-                                input.form-control
+                                input.form-control(name='transporter')
                             .form-group
                                 label Hãng vé
-                                    br
-                                    span (Tuỳ chọn)
-                                input.form-control
+                                input.form-control(name='carrier')
                             .form-group
                                 label Đặc biệt
                                     br
                                     span (Tuỳ chọn)
-                                input.form-control
+                                input.form-control(name='tags')
                             .form-group
                                 label Giá
-                                input.form-control
+                                input.form-control(name='price')
                             .form-group.ctrl-image
                                 label Hình ảnh
                                 a.img-container.form-control(href='#') Chọn hình ảnh
-                                input.hidden(type='file')
+                                input.hidden.form-control(type='file', name='image')
                             .form-group
                                 .p-left
                                 .p-right
-                                    a.button.btn-primary.hover-green(href='#') Đăng vé
+                                    a.button.btn-primary.hover-green(href='javascript:void(0);' onclick='$(this).parents("form").submit();') Đăng vé

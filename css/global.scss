@@ -158,6 +158,18 @@ hr {
     background-color: rgba(0, 0, 0, 0.6);
 }
 
+.form-control {
+    &.error {
+        border:1px solid #d9534f!important;
+        & + small.error {
+            display: block;
+            color: #d9534f;
+            padding-top: 5px;
+            position: absolute;
+        }
+    }
+
+}
 @media (max-width: 1000px) {
     body {
         width: 1000px;

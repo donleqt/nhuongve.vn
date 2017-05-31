@@ -159,7 +159,6 @@ myApp.controller('RootController', function ($scope, $state, $rootScope, $http) 
     };
     var back_to_top = function () {
         // Show or hide the sticky footer button
-        console.log($('.go-top'));
         $(window).scroll(function() {
             if ($(this).scrollTop() > 200) {
                 $('.go-top').fadeIn(200);
