@@ -1,6 +1,10 @@
 {
   "name": "adp_theme",
   "version": "1.0.0",
+  "local-web-server": {
+    "port": 4000,
+    "forbid": "*.json"
+  },
   "description": "",
   "main": "gulpfile.js",
   "dependencies": {
@@ -21,6 +25,7 @@
     "gulp-uglify": "^2.0.0",
     "jshint": "^2.9.3",
     "jshint-stylish": "^2.2.1",
+    "local-web-server": "^1.2.7",
     "main-bower-files": "^2.13.1",
     "path-exists": "^3.0.0"
   },

@@ -233,6 +233,12 @@ myApp.controller('RootController', function ($scope, $state, $rootScope, $http) 
         else {
             root.loginError = 'Vui lòng nhập email';
         }
+        //GA for click button event sign in
+        ga('send', 'event', {
+            eventCategory: 'Sign in',
+            eventAction: 'click button',
+            eventLabel: 'btn-signin'
+        });
     }
 
 

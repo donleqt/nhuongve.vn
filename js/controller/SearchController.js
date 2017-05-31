@@ -79,6 +79,12 @@ myApp.controller('SearchController', function ($scope, $state, $rootScope, $http
     };
     vm.search = function () {
         doSearchAndFilter($('.search-box').serializeObject());
+        //GA for click button event search ticket
+        ga('send', 'event', {
+            eventCategory: 'Search ticket',
+            eventAction: 'click button',
+            eventLabel: 'btSearch'
+        });
     };
     vm.quickBook = function (ticket) {
         if (rvm.user) {
