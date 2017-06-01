@@ -1,5 +1,7 @@
 a.go-top(href='javascript:void(0)')
     i.fa.fa-angle-up
+.loading-container.full(ng-if="pageLoad")
+    .loading
 .modal.fade.popup.popup-login(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
     .modal-dialog
         form.popup-content#loginForm(ng-submit='login()')

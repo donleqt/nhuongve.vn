@@ -12,40 +12,46 @@ block content
                         .col-sm-6
                             .form-group
                                 label Nơi đi
-                                input.form-control(name='from')
+                                select.form-control.select2-locations#from(name='from')
                             .form-group
                                 label Nơi đến
-                                input.form-control(name='to')
+                                select.form-control.select2-locations#to(name='to')
                             .form-group
                                 label Tên hành khách
-                                input.form-control(name='passenger')
+                                input.form-control(name='passenger', placeholder="Nhập họ và tên")
                             .form-group
                                 label Ngày đi
-                                input.form-control(name='begin_date')
+                                input#beginDate.form-control(name='begin_date', placeholder="Chọn ngày giờ")
                             .form-group.ctrl-description
                                 label Mô tả
                                     br
                                     span (Tuỳ chọn)
-                                textarea.form-control(name='description')
+                                textarea.form-control(name='description', placeholder="Nhập mô tả...")
                         .col-sm-6
                             .form-group
                                 label Loại vé
-                                input.form-control(name='transporter')
+                                select.form-control(name='transporter')
+                                    option(value="Máy bay") Máy bay
+                                    option(value="Tàu hỏa") Tàu hỏa
+                                    option(value="Xe khách") Xe khách
+                                    option(value="Xe khách") Tàu thủy
                             .form-group
                                 label Hãng vé
-                                input.form-control(name='carrier')
+                                select.form-control#carrier(name='carrier')
                             .form-group
                                 label Đặc biệt
                                     br
                                     span (Tuỳ chọn)
-                                input.form-control(name='tags')
+                                input.form-control(name='tags', placeholder="Thông tin nổi bật")
                             .form-group
-                                label Giá
-                                input.form-control(name='price')
+                                label Giá (VND)
+                                input.form-control(name='price', value=0, type="number")
                             .form-group.ctrl-image
                                 label Hình ảnh
-                                a.img-container.form-control(href='#') Chọn hình ảnh
-                                input.hidden.form-control(type='file', name='image')
+                                a.img-container.form-control(href='', onclick="document.getElementById('image').click();", ng-if="!previewImage" ) Chọn hình ảnh
+                                a.img-container(href='', onclick="document.getElementById('image').click();", ng-if="previewImage" )
+                                    img.previewImage(ng-src="{{previewImage}}")
+                                input.hidden.form-control(type='file', name='image', id='image')
                             .form-group
                                 .p-left
                                 .p-right

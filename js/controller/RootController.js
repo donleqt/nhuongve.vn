@@ -135,11 +135,27 @@ var helper = {
     beautyNumber: function (number) {
         return number ? number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : '';
 
+    },
+    /**
+     * Local preview image
+     *
+     * @param file: localfile upload path
+     * @return Data binary
+     *
+     */
+    localPreview: function (file) {
+        var defer = $.Deferred();
+        var fs = new FileReader();
+        fs.onload = function (e) {
+            defer.resolve(event.target.result);
+        };
+        fs.readAsDataURL(file);
+        return defer;
     }
 };
 var myApp = angular.module('myApp');
 
-myApp.controller('RootController', function ($scope, $state, $rootScope, $http) {
+myApp.controller('RootController', function ($scope, $state, $rootScope, db) {
     /**
      * Plain js and jquery function
      */
@@ -183,10 +199,10 @@ myApp.controller('RootController', function ($scope, $state, $rootScope, $http) 
      */
     var root = window.root = $rootScope;
     window.getData = root.getData = function (name) {
-        return $.getJSON('/data/'+name+'.json')
-            .fail(function (err) {
-                console.log("Can't connect to loading data:\n");
-            });
+        return db.ref(name).once('value')
+            .then(function (snapshot) {
+                return snapshot.val();
+            })
     };
 
     root.page = '';
@@ -205,8 +221,9 @@ myApp.controller('RootController', function ($scope, $state, $rootScope, $http) 
     root.openLogin = function () {
         $('.popup-login').modal('show');
     };
+
     root.getData('users')
-        .done(function (users) {
+        .then(function (users) {
             users.forEach(function (user, idz) {
                 users[user.email] = user;
             });

@@ -1,4 +1,5 @@
 myApp.controller('HomeController', function ($scope, $state, $rootScope, $http) {
+    var vm = $scope;
     $rootScope.page = 'page-home';
     /**
      * Plain js and jquery function
@@ -9,14 +10,15 @@ myApp.controller('HomeController', function ($scope, $state, $rootScope, $http) 
      * Angular
      *
      */
+    $rootScope.pageLoad = true;
     $rootScope.getData('locations')
-        .done(function (list) {
-            $rootScope.locations = list;
+        .then(function (locations) {
+            $rootScope.locations = locations;
+            $rootScope.pageLoad = false;
+            $scope.$apply();
         });
-    var vm = $scope;
     vm.search = function () {
         var params = $('.search-box').serializeObject();
-        console.log(params);
         $state.go('search',{condition:params});
     }
 });

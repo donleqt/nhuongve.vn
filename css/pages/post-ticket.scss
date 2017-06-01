@@ -23,11 +23,10 @@
                 vertical-align: middle;
             }
         }
+        select,
         input {
             @extend .p-right;
-            border-radius: 0;
-            font-size: 16px;
-            height: 42px;
+            font-size: 14px;
         }
         label {
             @extend .p-left;
@@ -48,12 +47,11 @@
             .img-container {
                 @extend .p-right;
                 display: block;
-                height: 120px;
+                min-height: 120px;
                 line-height: 120px;
                 text-align: center;
                 color: #888888;
                 font-size: 14px;
-                border-radius: 0;
             }
         }
         .ctrl-description {
@@ -76,6 +74,11 @@
                 background-color: #57BB89;
             }
         }
+    }
+    .previewImage {
+        width: 100%;
+        height: auto;
+        border: 1px solid rgba(0,0,0,0.3);
     }
 
 }

@@ -8,6 +8,7 @@
 @import url(../bower_components/rome/dist/rome.css);
 @import url(../bower_components/sweetalert/dist/sweetalert.css);
 @import url(../bower_components/toastr/toastr.css);
+@import url(../bower_components/select2/dist/css/select2.css);
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700");
 html {
   font-family: sans-serif;
@@ -2361,7 +2362,7 @@ output {
   line-height: 1.42857143;
   color: #555; }
 
-.form-control {
+.form-control, .ticket-form .select2-container--default .select2-selection--single {
   display: block;
   width: 100%;
   height: 34px;
@@ -2379,47 +2380,55 @@ output {
   -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; }
 
-.form-control:focus {
+.form-control:focus, .ticket-form .select2-container--default .select2-selection--single:focus {
   border-color: #66afe9;
   outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6); }
 
-.form-control::-moz-placeholder {
+.form-control::-moz-placeholder, .ticket-form .select2-container--default .select2-selection--single::-moz-placeholder {
   color: #999;
   opacity: 1; }
 
-.form-control:-ms-input-placeholder {
+.form-control:-ms-input-placeholder, .ticket-form .select2-container--default .select2-selection--single:-ms-input-placeholder {
   color: #999; }
 
-.form-control::-webkit-input-placeholder {
+.form-control::-webkit-input-placeholder, .ticket-form .select2-container--default .select2-selection--single::-webkit-input-placeholder {
   color: #999; }
 
-.form-control::-ms-expand {
+.form-control::-ms-expand, .ticket-form .select2-container--default .select2-selection--single::-ms-expand {
   background-color: transparent;
   border: 0; }
 
-.form-control[disabled],
+.form-control[disabled], .ticket-form .select2-container--default [disabled].select2-selection--single,
 .form-control[readonly],
-fieldset[disabled] .form-control {
+.ticket-form .select2-container--default [readonly].select2-selection--single,
+fieldset[disabled] .form-control,
+fieldset[disabled] .ticket-form .select2-container--default .select2-selection--single, .ticket-form .select2-container--default
+fieldset[disabled] .select2-selection--single {
   background-color: #eee;
   opacity: 1; }
 
-.form-control[disabled],
-fieldset[disabled] .form-control {
+.form-control[disabled], .ticket-form .select2-container--default [disabled].select2-selection--single,
+fieldset[disabled] .form-control,
+fieldset[disabled] .ticket-form .select2-container--default .select2-selection--single, .ticket-form .select2-container--default
+fieldset[disabled] .select2-selection--single {
   cursor: not-allowed; }
 
-textarea.form-control {
+textarea.form-control, .ticket-form .select2-container--default textarea.select2-selection--single {
   height: auto; }
 
 input[type="search"] {
   -webkit-appearance: none; }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-  input[type="date"].form-control,
+  input[type="date"].form-control, .ticket-form .select2-container--default input[type="date"].select2-selection--single,
   input[type="time"].form-control,
+  .ticket-form .select2-container--default input[type="time"].select2-selection--single,
   input[type="datetime-local"].form-control,
-  input[type="month"].form-control {
+  .ticket-form .select2-container--default input[type="datetime-local"].select2-selection--single,
+  input[type="month"].form-control,
+  .ticket-form .select2-container--default input[type="month"].select2-selection--single {
     line-height: 34px; }
   input[type="date"].input-sm,
   input[type="time"].input-sm,
@@ -2531,19 +2540,21 @@ textarea.input-sm,
 select[multiple].input-sm {
   height: auto; }
 
-.form-group-sm .form-control {
+.form-group-sm .form-control, .form-group-sm .ticket-form .select2-container--default .select2-selection--single, .ticket-form .select2-container--default .form-group-sm .select2-selection--single {
   height: 30px;
   padding: 5px 10px;
   font-size: 12px;
   line-height: 1.5;
   border-radius: 3px; }
 
-.form-group-sm select.form-control {
+.form-group-sm select.form-control, .form-group-sm .ticket-form .select2-container--default select.select2-selection--single, .ticket-form .select2-container--default .form-group-sm select.select2-selection--single {
   height: 30px;
   line-height: 30px; }
 
-.form-group-sm textarea.form-control,
-.form-group-sm select[multiple].form-control {
+.form-group-sm textarea.form-control, .form-group-sm .ticket-form .select2-container--default textarea.select2-selection--single, .ticket-form .select2-container--default .form-group-sm textarea.select2-selection--single,
+.form-group-sm select[multiple].form-control,
+.form-group-sm .ticket-form .select2-container--default select[multiple].select2-selection--single, .ticket-form .select2-container--default
+.form-group-sm select[multiple].select2-selection--single {
   height: auto; }
 
 .form-group-sm .form-control-static {
@@ -2568,19 +2579,21 @@ textarea.input-lg,
 select[multiple].input-lg {
   height: auto; }
 
-.form-group-lg .form-control {
+.form-group-lg .form-control, .form-group-lg .ticket-form .select2-container--default .select2-selection--single, .ticket-form .select2-container--default .form-group-lg .select2-selection--single {
   height: 46px;
   padding: 10px 16px;
   font-size: 18px;
   line-height: 1.3333333;
   border-radius: 6px; }
 
-.form-group-lg select.form-control {
+.form-group-lg select.form-control, .form-group-lg .ticket-form .select2-container--default select.select2-selection--single, .ticket-form .select2-container--default .form-group-lg select.select2-selection--single {
   height: 46px;
   line-height: 46px; }
 
-.form-group-lg textarea.form-control,
-.form-group-lg select[multiple].form-control {
+.form-group-lg textarea.form-control, .form-group-lg .ticket-form .select2-container--default textarea.select2-selection--single, .ticket-form .select2-container--default .form-group-lg textarea.select2-selection--single,
+.form-group-lg select[multiple].form-control,
+.form-group-lg .ticket-form .select2-container--default select[multiple].select2-selection--single, .ticket-form .select2-container--default
+.form-group-lg select[multiple].select2-selection--single {
   height: auto; }
 
 .form-group-lg .form-control-static {
@@ -2593,7 +2606,7 @@ select[multiple].input-lg {
 .has-feedback {
   position: relative; }
 
-.has-feedback .form-control {
+.has-feedback .form-control, .has-feedback .ticket-form .select2-container--default .select2-selection--single, .ticket-form .select2-container--default .has-feedback .select2-selection--single {
   padding-right: 42.5px; }
 
 .form-control-feedback {
@@ -2610,14 +2623,18 @@ select[multiple].input-lg {
 
 .input-lg + .form-control-feedback,
 .input-group-lg + .form-control-feedback,
-.form-group-lg .form-control + .form-control-feedback {
+.form-group-lg .form-control + .form-control-feedback,
+.form-group-lg .ticket-form .select2-container--default .select2-selection--single + .form-control-feedback, .ticket-form .select2-container--default
+.form-group-lg .select2-selection--single + .form-control-feedback {
   width: 46px;
   height: 46px;
   line-height: 46px; }
 
 .input-sm + .form-control-feedback,
 .input-group-sm + .form-control-feedback,
-.form-group-sm .form-control + .form-control-feedback {
+.form-group-sm .form-control + .form-control-feedback,
+.form-group-sm .ticket-form .select2-container--default .select2-selection--single + .form-control-feedback, .ticket-form .select2-container--default
+.form-group-sm .select2-selection--single + .form-control-feedback {
   width: 30px;
   height: 30px;
   line-height: 30px; }
@@ -2634,12 +2651,12 @@ select[multiple].input-lg {
 .has-success.checkbox-inline label {
   color: #3c763d; }
 
-.has-success .form-control {
+.has-success .form-control, .has-success .ticket-form .select2-container--default .select2-selection--single, .ticket-form .select2-container--default .has-success .select2-selection--single {
   border-color: #3c763d;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); }
 
-.has-success .form-control:focus {
+.has-success .form-control:focus, .has-success .ticket-form .select2-container--default .select2-selection--single:focus, .ticket-form .select2-container--default .has-success .select2-selection--single:focus {
   border-color: #2b542c;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168; }
@@ -2664,12 +2681,12 @@ select[multiple].input-lg {
 .has-warning.checkbox-inline label {
   color: #8a6d3b; }
 
-.has-warning .form-control {
+.has-warning .form-control, .has-warning .ticket-form .select2-container--default .select2-selection--single, .ticket-form .select2-container--default .has-warning .select2-selection--single {
   border-color: #8a6d3b;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); }
 
-.has-warning .form-control:focus {
+.has-warning .form-control:focus, .has-warning .ticket-form .select2-container--default .select2-selection--single:focus, .ticket-form .select2-container--default .has-warning .select2-selection--single:focus {
   border-color: #66512c;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b; }
@@ -2694,12 +2711,12 @@ select[multiple].input-lg {
 .has-error.checkbox-inline label {
   color: #a94442; }
 
-.has-error .form-control {
+.has-error .form-control, .has-error .ticket-form .select2-container--default .select2-selection--single, .ticket-form .select2-container--default .has-error .select2-selection--single {
   border-color: #a94442;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); }
 
-.has-error .form-control:focus {
+.has-error .form-control:focus, .has-error .ticket-form .select2-container--default .select2-selection--single:focus, .ticket-form .select2-container--default .has-error .select2-selection--single:focus {
   border-color: #843534;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483; }
@@ -2729,7 +2746,7 @@ select[multiple].input-lg {
     display: inline-block;
     margin-bottom: 0;
     vertical-align: middle; }
-  .form-inline .form-control {
+  .form-inline .form-control, .form-inline .ticket-form .select2-container--default .select2-selection--single, .ticket-form .select2-container--default .form-inline .select2-selection--single {
     display: inline-block;
     width: auto;
     vertical-align: middle; }
@@ -2740,9 +2757,11 @@ select[multiple].input-lg {
     vertical-align: middle; }
   .form-inline .input-group .input-group-addon,
   .form-inline .input-group .input-group-btn,
-  .form-inline .input-group .form-control {
+  .form-inline .input-group .form-control,
+  .form-inline .input-group .ticket-form .select2-container--default .select2-selection--single, .ticket-form .select2-container--default
+  .form-inline .input-group .select2-selection--single {
     width: auto; }
-  .form-inline .input-group > .form-control {
+  .form-inline .input-group > .form-control, .form-inline .ticket-form .select2-container--default .input-group > .select2-selection--single, .ticket-form .select2-container--default .form-inline .input-group > .select2-selection--single {
     width: 100%; }
   .form-inline .control-label {
     margin-bottom: 0;
@@ -3619,17 +3638,17 @@ tbody.collapse.in {
   padding-right: 0;
   padding-left: 0; }
 
-.input-group .form-control {
+.input-group .form-control, .input-group .ticket-form .select2-container--default .select2-selection--single, .ticket-form .select2-container--default .input-group .select2-selection--single {
   position: relative;
   z-index: 2;
   float: left;
   width: 100%;
   margin-bottom: 0; }
 
-.input-group .form-control:focus {
+.input-group .form-control:focus, .input-group .ticket-form .select2-container--default .select2-selection--single:focus, .ticket-form .select2-container--default .input-group .select2-selection--single:focus {
   z-index: 3; }
 
-.input-group-lg > .form-control,
+.input-group-lg > .form-control, .ticket-form .select2-container--default .input-group-lg > .select2-selection--single,
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .btn {
   height: 46px;
@@ -3638,21 +3657,22 @@ tbody.collapse.in {
   line-height: 1.3333333;
   border-radius: 6px; }
 
-select.input-group-lg > .form-control,
+select.input-group-lg > .form-control, .ticket-form .select2-container--default select.input-group-lg > .select2-selection--single,
 select.input-group-lg > .input-group-addon,
 select.input-group-lg > .input-group-btn > .btn {
   height: 46px;
   line-height: 46px; }
 
-textarea.input-group-lg > .form-control,
+textarea.input-group-lg > .form-control, .ticket-form .select2-container--default textarea.input-group-lg > .select2-selection--single,
 textarea.input-group-lg > .input-group-addon,
 textarea.input-group-lg > .input-group-btn > .btn,
-select[multiple].input-group-lg > .form-control,
+select[multiple].input-group-lg > .form-control, .ticket-form .select2-container--default
+select[multiple].input-group-lg > .select2-selection--single,
 select[multiple].input-group-lg > .input-group-addon,
 select[multiple].input-group-lg > .input-group-btn > .btn {
   height: auto; }
 
-.input-group-sm > .form-control,
+.input-group-sm > .form-control, .ticket-form .select2-container--default .input-group-sm > .select2-selection--single,
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .btn {
   height: 30px;
@@ -3661,28 +3681,33 @@ select[multiple].input-group-lg > .input-group-btn > .btn {
   line-height: 1.5;
   border-radius: 3px; }
 
-select.input-group-sm > .form-control,
+select.input-group-sm > .form-control, .ticket-form .select2-container--default select.input-group-sm > .select2-selection--single,
 select.input-group-sm > .input-group-addon,
 select.input-group-sm > .input-group-btn > .btn {
   height: 30px;
   line-height: 30px; }
 
-textarea.input-group-sm > .form-control,
+textarea.input-group-sm > .form-control, .ticket-form .select2-container--default textarea.input-group-sm > .select2-selection--single,
 textarea.input-group-sm > .input-group-addon,
 textarea.input-group-sm > .input-group-btn > .btn,
-select[multiple].input-group-sm > .form-control,
+select[multiple].input-group-sm > .form-control, .ticket-form .select2-container--default
+select[multiple].input-group-sm > .select2-selection--single,
 select[multiple].input-group-sm > .input-group-addon,
 select[multiple].input-group-sm > .input-group-btn > .btn {
   height: auto; }
 
 .input-group-addon,
 .input-group-btn,
-.input-group .form-control {
+.input-group .form-control,
+.input-group .ticket-form .select2-container--default .select2-selection--single, .ticket-form .select2-container--default
+.input-group .select2-selection--single {
   display: table-cell; }
 
 .input-group-addon:not(:first-child):not(:last-child),
 .input-group-btn:not(:first-child):not(:last-child),
-.input-group .form-control:not(:first-child):not(:last-child) {
+.input-group .form-control:not(:first-child):not(:last-child),
+.input-group .ticket-form .select2-container--default .select2-selection--single:not(:first-child):not(:last-child), .ticket-form .select2-container--default
+.input-group .select2-selection--single:not(:first-child):not(:last-child) {
   border-radius: 0; }
 
 .input-group-addon,
@@ -3716,7 +3741,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .input-group-addon input[type="checkbox"] {
   margin-top: 0; }
 
-.input-group .form-control:first-child,
+.input-group .form-control:first-child, .input-group .ticket-form .select2-container--default .select2-selection--single:first-child, .ticket-form .select2-container--default .input-group .select2-selection--single:first-child,
 .input-group-addon:first-child,
 .input-group-btn:first-child > .btn,
 .input-group-btn:first-child > .btn-group > .btn,
@@ -3729,7 +3754,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .input-group-addon:first-child {
   border-right: 0; }
 
-.input-group .form-control:last-child,
+.input-group .form-control:last-child, .input-group .ticket-form .select2-container--default .select2-selection--single:last-child, .ticket-form .select2-container--default .input-group .select2-selection--single:last-child,
 .input-group-addon:last-child,
 .input-group-btn:last-child > .btn,
 .input-group-btn:last-child > .btn-group > .btn,
@@ -4149,7 +4174,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     display: inline-block;
     margin-bottom: 0;
     vertical-align: middle; }
-  .navbar-form .form-control {
+  .navbar-form .form-control, .navbar-form .ticket-form .select2-container--default .select2-selection--single, .ticket-form .select2-container--default .navbar-form .select2-selection--single {
     display: inline-block;
     width: auto;
     vertical-align: middle; }
@@ -4160,9 +4185,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     vertical-align: middle; }
   .navbar-form .input-group .input-group-addon,
   .navbar-form .input-group .input-group-btn,
-  .navbar-form .input-group .form-control {
+  .navbar-form .input-group .form-control,
+  .navbar-form .input-group .ticket-form .select2-container--default .select2-selection--single, .ticket-form .select2-container--default
+  .navbar-form .input-group .select2-selection--single {
     width: auto; }
-  .navbar-form .input-group > .form-control {
+  .navbar-form .input-group > .form-control, .navbar-form .ticket-form .select2-container--default .input-group > .select2-selection--single, .ticket-form .select2-container--default .navbar-form .input-group > .select2-selection--single {
     width: 100%; }
   .navbar-form .control-label {
     margin-bottom: 0;
@@ -6599,9 +6626,9 @@ hr {
 .go-top:hover {
   background-color: rgba(0, 0, 0, 0.6); }
 
-.form-control.error {
+.form-control.error, .ticket-form .select2-container--default .error.select2-selection--single {
   border: 1px solid #d9534f !important; }
-  .form-control.error + small.error {
+  .form-control.error + small.error, .ticket-form .select2-container--default .error.select2-selection--single + small.error {
     display: block;
     color: #d9534f;
     padding-top: 5px;
@@ -6761,7 +6788,7 @@ header {
         transform: translateY(-50%);
         top: 50%;
         width: 20px; }
-      .search-box .input-group .addon-icon + input, .search-box .input-group .addon-icon + .form-control {
+      .search-box .input-group .addon-icon + input, .search-box .input-group .addon-icon + .form-control, .search-box .input-group .ticket-form .select2-container--default .addon-icon + .select2-selection--single, .ticket-form .select2-container--default .search-box .input-group .addon-icon + .select2-selection--single {
         padding-right: 50px; }
   .search-box .input-group-addon {
     border: 0;
@@ -6772,7 +6799,7 @@ header {
     height: 45px;
     width: 150px;
     line-height: 45px; }
-  .search-box input, .search-box .form-control {
+  .search-box input, .search-box .form-control, .search-box .ticket-form .select2-container--default .select2-selection--single, .ticket-form .select2-container--default .search-box .select2-selection--single {
     border-radius: 0;
     height: 100%;
     font-size: 16px; }
@@ -6787,6 +6814,55 @@ header {
       font-weight: 600; }
   .widget .widget-content {
     background-color: #ffffff; }
+
+.loading-container {
+  position: relative;
+  min-height: 50px;
+  margin: 20px 0;
+  cursor: wait; }
+  .loading-container.full {
+    position: fixed;
+    top: 0;
+    margin: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 2000; }
+    .loading-container.full .loading {
+      border: 5px solid white;
+      border-top-color: #f47d31; }
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -25px 0 0 -25px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 5px solid rgba(187, 187, 187, 0.42);
+  border-top-color: #f47d31;
+  animation: spin 0.8s infinite linear;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+/* hack selec2*/
+.ticket-form .select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: inherit;
+  padding: 0; }
+
+.ticket-form .rd-day-body {
+  padding: 8px; }
 
 .popup .btn-close {
   width: 25px;
@@ -6983,7 +7059,7 @@ header {
 .page-post-ticket .ticket-form {
   margin-top: 40px;
   margin-bottom: 45px; }
-  .page-post-ticket .ticket-form .p-right, .page-post-ticket .ticket-form input, .page-post-ticket .ticket-form .ctrl-image .img-container, .page-post-ticket .ticket-form .ctrl-description textarea {
+  .page-post-ticket .ticket-form .p-right, .page-post-ticket .ticket-form select, .page-post-ticket .ticket-form input, .page-post-ticket .ticket-form .ctrl-image .img-container, .page-post-ticket .ticket-form .ctrl-description textarea {
     width: 290px; }
   .page-post-ticket .ticket-form .p-left, .page-post-ticket .ticket-form label {
     width: 160px; }
@@ -6993,10 +7069,9 @@ header {
     .page-post-ticket .ticket-form .form-group > * {
       display: table-cell;
       vertical-align: middle; }
+  .page-post-ticket .ticket-form select,
   .page-post-ticket .ticket-form input {
-    border-radius: 0;
-    font-size: 16px;
-    height: 42px; }
+    font-size: 14px; }
   .page-post-ticket .ticket-form label {
     font-weight: 600;
     font-size: 14px;
@@ -7010,12 +7085,11 @@ header {
     vertical-align: top; }
   .page-post-ticket .ticket-form .ctrl-image .img-container {
     display: block;
-    height: 120px;
+    min-height: 120px;
     line-height: 120px;
     text-align: center;
     color: #888888;
-    font-size: 14px;
-    border-radius: 0; }
+    font-size: 14px; }
   .page-post-ticket .ticket-form .ctrl-description > * {
     vertical-align: top; }
   .page-post-ticket .ticket-form .ctrl-description textarea {
@@ -7029,6 +7103,11 @@ header {
     padding: 0; }
     .page-post-ticket .ticket-form .btn-primary:hover {
       background-color: #57BB89; }
+
+.page-post-ticket .previewImage {
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(0, 0, 0, 0.3); }
 
 .page-search .top-bg-wrapper {
   height: 180px;

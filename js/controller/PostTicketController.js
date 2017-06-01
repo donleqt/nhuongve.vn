@@ -1,8 +1,8 @@
 'use strict'
 window.myApp.controller('PostTicketController', function ($scope, $state, $rootScope, initService) {
     var toastr = window.toastr;
+    var vm = $scope;
     $rootScope.user = $rootScope.user || 1;
-
     /**
      * Plain js and jquery function
      */
@@ -28,8 +28,7 @@ window.myApp.controller('PostTicketController', function ($scope, $state, $rootS
                     required: true
                 },
                 price: {
-                    required: true,
-                    value: 0
+                    required: true
                 },
                 image: {
                     required:true
@@ -64,16 +63,70 @@ window.myApp.controller('PostTicketController', function ($scope, $state, $rootS
                 }
             },
             submitHandler: function (form) {
+                console.log('helen');
+                console.log($(form).serializeObject());
                 return false;
             }
         });
+        $(document).on('change','#image',function () {
+            if(this.value) {
+                 helper.localPreview(this.files[0])
+                    .done(function (data) {
+                        vm.previewImage =data;
+                        vm.$apply();
+
+                    });
+            }
+        });
+        var d = new Date();
+        d.setDate(d.getDate() + 1);
+        rome(document.getElementById('beginDate'),{min:d});
+        $('#carrier').select2({
+            placeholder: 'Chọn hãng xe',
+            data: [
+                {
+                    id: 'Phương Trang',
+                    text: 'Phương Trang'
+                },
+                {
+                    id: 'Thành Bưởi',
+                    text: 'Thành Bưởi'
+                },
+                {
+                    id: 'Jetstar',
+                    text: 'Jetstar'
+                },
+                {
+                    id: 'Vietnam Airline',
+                    text: 'Vietnam Airline'
+                },
+                {
+                    id: 'VietJet air',
+                    text: 'VietJet air'
+                }
+            ],
+            tags: true
+        })
     });
-    if (!$rootScope.user) {
-        toastr.warning('Bạn cần đăng nhập để thực hiện đăng vé.');
-        $rootScope.openLogin();
-    }
+
     /**
      * Angular
      *
      */
+    if (!$rootScope.user) {
+        toastr.warning('Bạn cần đăng nhập để thực hiện đăng vé.');
+        $rootScope.openLogin();
+    }
+    $rootScope.getData('locations')
+        .then(function (locations) {
+            $('.select2-locations').select2({
+                placeholder: 'Chọn điểm đi',
+                data: locations.map(function (city,idz) {
+                    return {
+                        id: idz,
+                        text: city.name
+                    }
+                })
+            });
+        });
 });

@@ -17,22 +17,25 @@ myApp.controller('SearchController', function ($scope, $state, $rootScope, $http
     };
     vm.preset = null;
     vm.beautyNumber = helper.beautyNumber;
+    vm.loading = false;
     rvm.page = 'page-search';
     var doSearchAndFilter = function (condition) {
         condition = condition || {};
+        vm.loading = true;
         rvm.getData('tickets')
-            .done(function (tickets) {
+            .then(function (tickets) {
                 /*Get filter*/
                 vm.results = tickets.filter(function (item,idz) {
                     if (    (rvm.locations[condition.from] && rvm.locations[condition.from].name !== item.from )
                         ||  (rvm.locations[condition.to] && rvm.locations[condition.to].name !== item.to)) {
                         return false;
                     }
-                    if (condition.date && item.begin_date !== helper.getDateString(condition.date,'dd/mm/yyyy')) {
+                    if(condition.date && item.begin_date !== helper.getDateString(condition.date,'dd/mm/yyyy')) {
                         return false;
                     }
                     return true;
                 });
+                vm.loading = false;
                 vm.$apply();
             });
     };
@@ -102,25 +105,25 @@ myApp.controller('SearchController', function ($scope, $state, $rootScope, $http
             rvm.openLogin();
         }
     };
+    vm.loading = true;
     rvm.getData('locations')
-        .done(function (list) {
+        .then(function (list) {
             rvm.locations = list;
             if (!$state.params.condition) {
                 rvm.getData('tickets')
-                    .done(function (tickets) {
+                    .then(function (tickets) {
+                        vm.loading = false;
                         vm.results = tickets;
                         vm.$apply();
                     });
             }
             else {
+                vm.loading = false;
                 setTimeout(function () {
                     $('.search-box').formApply($state.params.condition);
-
-                },10);
+                },300);
                 doSearchAndFilter($state.params.condition);
                 vm.preset = $state.params.condition;
             }
         });
-
-
 });

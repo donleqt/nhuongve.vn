@@ -8,7 +8,7 @@ angular.module('myApp').factory('initService',function () {
         name = name || 'default';
         if (!self.runned[name] && typeof cb === 'function') {
             cb();
-            self.runned[name] = true;
+            // self.runned[name] = true;
         }
     };
     return self;
