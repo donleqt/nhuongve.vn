@@ -1,4 +1,4 @@
-myApp.controller('SearchController', function ($scope, $state, $rootScope, $http) {
+myApp.controller('SearchController', function ($scope, $state, $rootScope, gaService) {
     /**
      * Plain js and jquery function
      */
@@ -47,6 +47,7 @@ myApp.controller('SearchController', function ($scope, $state, $rootScope, $http
     };
     vm.results = null;
     vm.applyFilter = function () {
+        gaService.event('Filter result','Click Apply filter button', 'Apply filter');
         vm.resetResult();
         var filter = $('.filter-box').serializeObject();
         vm.applyFilter.list = vm.results;
@@ -61,6 +62,7 @@ myApp.controller('SearchController', function ($scope, $state, $rootScope, $http
         });
     };
     vm.resetFilterBox = function () {
+        gaService.event('Filter result','Click filter reset button', 'Reset filter');
         $('.filter-box').formApply(defaultFilter);
         if (vm.applyFilter.list) {
             vm.results = vm.applyFilter.list;
@@ -79,15 +81,13 @@ myApp.controller('SearchController', function ($scope, $state, $rootScope, $http
         else {
             target.slideUp(opt);
         }
+        gaService.event('Filter result','Click Toggle filter button', 'Toggle filter result form');
+
     };
     vm.search = function () {
         doSearchAndFilter($('.search-box').serializeObject());
         //GA for click button event search ticket
-        ga('send', 'event', {
-            eventCategory: 'Search ticket',
-            eventAction: 'click button',
-            eventLabel: 'btSearch'
-        });
+        gaService.event('Search tickets','Click search from search page', 'Search from search page');
     };
     vm.quickBook = function (ticket) {
         if (rvm.user) {
@@ -149,4 +149,5 @@ myApp.controller('SearchController', function ($scope, $state, $rootScope, $http
                 vm.preset = $state.params.condition;
             }
         });
+    gaService.page('Search');
 });

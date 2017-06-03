@@ -160,7 +160,7 @@ var tempList = {
 };
 var myApp = angular.module('myApp');
 
-myApp.controller('RootController', function ($scope, $state, $rootScope) {
+myApp.controller('RootController', function ($scope, $state, $rootScope,gaService) {
     /**
      * Plain js and jquery function
      */
@@ -203,6 +203,8 @@ myApp.controller('RootController', function ($scope, $state, $rootScope) {
      * Angular
      */
     var root = window.root = $rootScope;
+    root.gaService = gaService;
+    root.state = $state;
     var getDataLocal =  function (name,time) {
         var delay = time || 0;
         return new Promise(function (resolve, reject) {
@@ -319,6 +321,7 @@ myApp.controller('RootController', function ($scope, $state, $rootScope) {
             else {
                 root.loginError = 'Vui lòng nhập email';
             }
+            gaService.event("Login","Click Login button","Do  login");
             root.$apply();
             return false;
         }
@@ -375,6 +378,7 @@ myApp.controller('RootController', function ($scope, $state, $rootScope) {
                 swal("Chúc mừng!", "Đăng ký thành công !\nBạn đã trở thành thành viên của nhuongve.vn", "success");
 
             }
+            gaService.event("Register","Click register button","Do register");
             return false;
 
         }

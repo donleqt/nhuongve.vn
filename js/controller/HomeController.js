@@ -1,4 +1,4 @@
-myApp.controller('HomeController', function ($scope, $state, $rootScope, $http) {
+myApp.controller('HomeController', function ($scope, $state, $rootScope, gaService) {
     var vm = $scope;
     $rootScope.page = 'page-home';
     /**
@@ -33,6 +33,8 @@ myApp.controller('HomeController', function ($scope, $state, $rootScope, $http) 
         });
     vm.search = function () {
         var params = $('.search-box').serializeObject();
+        gaService.event('Search tickets','Click search button from home page', 'Search from home');
         $state.go('search',{condition:params});
-    }
+    };
+    gaService.page('Home');
 });

@@ -1,11 +1,11 @@
-a.go-top(href='javascript:void(0)')
+a.go-top(href='javascript:void(0)', ng-click="gaService.event('Back to top','Click from '  + state.current.name,'Use back to top in ' + state.current.name)")
     i.fa.fa-angle-up
 //.loading-container.full(ng-show="pageLoad")
 //    .loading
 .modal.fade.popup.popup-login(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
     .modal-dialog
         .popup-content#loginForm
-            a.btn-close(href='javascript:void(0)', data-dismiss="modal" aria-hidden="true")
+            a.btn-close(href='javascript:void(0)', data-dismiss="modal" aria-hidden="true" ng-click='gaService.event("Login","Click close login","Cancel login");')
             .popup-title Đăng nhập
             hr
             h4.form-group.text-center.text-danger(ng-if='loginError') {{loginError}}
@@ -22,7 +22,7 @@ a.go-top(href='javascript:void(0)')
                 button.hidden(type="submit")
                 .text-center
                     a.signup-invite(href='javascript:void(0)')  Chưa có tài khoản? <b>Đăng ký ngay</b>
-.modal.fade.popup.popup-signup(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+.modal.fade.popup.popup-signup(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true', ng-click='gaService.event("Register","Click close register","Cancel register");')
     .modal-dialog
         .popup-content
             a.btn-close(href='javascript:void(0)', data-dismiss="modal" aria-hidden="true")

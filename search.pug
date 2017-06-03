@@ -60,7 +60,7 @@ block content
                             input.form-control(type='number', min='0' name="maxPrice")
                     .buttons
                         a.button.btn-reset(href='javascript:void(0);' ng-click="resetFilterBox()") Về mặc định
-                        a.button.btn-primary.hover-green(href='javascript:void(0);' ng-click="applyFilter()") Áp dụng
+                        a.button.btn-primary.hover-green(href='javascript:void(0);' ng-click="applyFilter();") Áp dụng
                 .loading-container(ng-show="loading")
                     .loading
                 .inner(ng-show="!loading")
