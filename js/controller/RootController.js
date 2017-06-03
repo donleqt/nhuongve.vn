@@ -323,7 +323,12 @@ myApp.controller('RootController', function ($scope, $state, $rootScope) {
             return false;
         }
     });
-
+    //GA for click button event sign in
+    ga('send', 'event', {
+        eventCategory: 'Sign in',
+        eventAction: 'click button',
+        eventLabel: 'btn-signin'
+    });
     $('.register-form').validate({
         rules: {
             name: {
@@ -374,4 +379,5 @@ myApp.controller('RootController', function ($scope, $state, $rootScope) {
 
         }
     });
+
 });

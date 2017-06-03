@@ -10,29 +10,39 @@ html(lang='en')
         meta(name='author', content='Don Le, Sutrix')
         //meta(name='viewport', content='width=device-width, initial-scale=1.0, user-scalable=no')
         link(rel='stylesheet', href='css/style.css?v=1.0')
+        script.
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+            ga('create', 'UA-100257318-1', 'auto');
+            ga('send', 'pageview');
         //if lt IE 9
             script(src='https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js')
     body(ng-class="page" ng-app='myApp' ng-controller='RootController')
         include templates/com/header
         .page-content(ui-view)
         include templates/com/footer
-        script(src='https://www.gstatic.com/firebasejs/4.0.0/firebase-app.js')
-        script(src='https://www.gstatic.com/firebasejs/4.0.0/firebase-database.js')
-        script(src='./js/plugins/jquery-3.2.0.min.js')
-        script(src='/bower_components/rome/dist/rome.js')
-        script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
-        script(src='/bower_components/toastr/toastr.js')
-        script(src='/bower_components/sweetalert/dist/sweetalert.min.js')
-        script(src='/bower_components/angular/angular.js')
-        script(src='/bower_components/angular-ui-router/release/angular-ui-router.js')
-        script(src='/bower_components/jquery-validation/dist/jquery.validate.min.js')
-        script(src='/bower_components/select2/dist/js/select2.js')
+            script(src='./js/plugins/jquery-3.2.0.min.js')
+            script(src='/bower_components/rome/dist/rome.js')
+            script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
+            script(src='/bower_components/toastr/toastr.js')
+            script(src='/bower_components/sweetalert/dist/sweetalert.min.js')
+            script(src='/bower_components/angular/angular.js')
+            script(src='/bower_components/angular-ui-router/release/angular-ui-router.js')
+            script(src='/bower_components/jquery-validation/dist/jquery.validate.min.js')
+            script(src='/bower_components/select2/dist/js/select2.js')
 
-        script(src='/js/main.js')
-        script(src='/js/initService.js')
-        //script(src='/js/firebaseDb.js')
-        script(src='/js/controller/RootController.js')
-        script(src='/js/controller/SearchController.js')
-        script(src='/js/controller/PostTicketController.js')
-        script(src='/js/controller/HomeController.js')
-        script(src='/js/controller/HomeController.js')
+            script(src='/js/main.js')
+            script(src='/js/initService.js')
+            script(src='/js/controller/RootController.js')
+            script(src='/js/controller/SearchController.js')
+            script(src='/js/controller/PostTicketController.js')
+            script(src='/js/controller/HomeController.js')
