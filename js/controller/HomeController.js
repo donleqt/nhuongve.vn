@@ -10,11 +10,25 @@ myApp.controller('HomeController', function ($scope, $state, $rootScope, $http) 
      * Angular
      *
      */
-    $rootScope.pageLoad = true;
-    $rootScope.getData('locations')
+    $rootScope.getData('locations',1)
         .then(function (locations) {
             $rootScope.locations = locations;
-            $rootScope.pageLoad = false;
+            var data = [
+                {
+                    id:'all',
+                    text:'Tất cả'
+                }
+            ];
+            data = data.concat(locations.map(function (city,idz) {
+                return {
+                    id: idz,
+                    text: city.name
+                }
+            }));
+            $('.select2-location2').select2({
+                placeholder: 'Chọn tỉnh/thành phố',
+                data:data
+            });
             $scope.$apply();
         });
     vm.search = function () {

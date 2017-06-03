@@ -153,9 +153,14 @@ var helper = {
         return defer;
     }
 };
+var tempList = {
+    users: [],
+    locations: [],
+    tickets: []
+};
 var myApp = angular.module('myApp');
 
-myApp.controller('RootController', function ($scope, $state, $rootScope, db) {
+myApp.controller('RootController', function ($scope, $state, $rootScope) {
     /**
      * Plain js and jquery function
      */
@@ -198,12 +203,27 @@ myApp.controller('RootController', function ($scope, $state, $rootScope, db) {
      * Angular
      */
     var root = window.root = $rootScope;
-    window.getData = root.getData = function (name) {
+    var getDataLocal =  function (name,time) {
+        var delay = time || 0;
+        return new Promise(function (resolve, reject) {
+            $.getJSON('/data/'+name+'.json')
+                .done(function (data) {
+                    if(tempList[name]) {
+                        data = data.concat(tempList[name]);
+                    }
+                    setTimeout(function () {
+                        resolve(data);
+                    },delay);
+                });
+        });
+    };
+    var getDataOnline = function (name) {
         return db.ref(name).once('value')
             .then(function (snapshot) {
                 return snapshot.val();
-            })
+            });
     };
+    window.getData = root.getData = getDataLocal;
 
     root.page = '';
     $(document).on('click','.signup-invite',function () {
@@ -218,17 +238,24 @@ myApp.controller('RootController', function ($scope, $state, $rootScope, db) {
         $(this).find('form')[0].reset();
         root.loginError = '';
     });
+    $('.popup-signup').on('hide.bs.modal',function () {
+        $(this).find('form')[0].reset();
+        root.signupError = '';
+    });
     root.openLogin = function () {
         $('.popup-login').modal('show');
     };
 
-    root.getData('users')
-        .then(function (users) {
-            users.forEach(function (user, idz) {
-                users[user.email] = user;
+    root.fetchUsers = function () {
+        root.getData('users')
+            .then(function (users) {
+                users.forEach(function (user, idz) {
+                    users[user.email] = user;
+                });
+                root.users = users;
             });
-            root.users = users;
-        });
+    };
+    root.fetchUsers();
     root.login = function () {
         var data = $('#loginForm').serializeObject();
         root.loginError='';
@@ -250,8 +277,101 @@ myApp.controller('RootController', function ($scope, $state, $rootScope, db) {
         else {
             root.loginError = 'Vui lòng nhập email';
         }
-    }
+    };
 
+    $('.login-form').validate({
+        rules: {
+            email: {
+                required: true,
+                email: true
+            },
+            password: {
+                required: true
+            }
+        },
+        messages: {
+            email: {
+                required: 'Vui lòng nhập email',
+                email: 'Email không hợp lệ'
+            },
+            password: {
+                required: 'Vui lòng nhập mật khẩu'
+            }
+        },
+        submitHandler: function (form) {
+            var data = $(form).serializeObject();
+            root.loginError='';
+            if (data.email) {
+                if (root.users[data.email]) {
+                    if (root.users[data.email].password === data.password) {
+                        root.user = root.users[data.email];
+                        $('.popup-login').modal('hide');
+                        toastr.success('Chào '+root.user.name+', bạn đã đăng nhập thành công!');
+                    }
+                    else {
+                        root.loginError = 'Sai mật khẩu!';
+                    }
+                }
+                else {
+                    root.loginError = 'Không có tài khoản này';
+                }
+            }
+            else {
+                root.loginError = 'Vui lòng nhập email';
+            }
+            root.$apply();
+            return false;
+        }
+    });
 
+    $('.register-form').validate({
+        rules: {
+            name: {
+                required: true
+            },
+            email: {
+                required: true,
+                email: true
+            },
+            password: {
+                required: true,
+                minlength: 6
+            }
+        },
+        messages: {
+            name: {
+                required: 'Vui lòng nhập họ tên'
+            },
+            email: {
+                required: 'Vui lòng nhập email',
+                email: 'Email không hợp lệ'
+            },
+            password: {
+                required: 'Vui lòng nhập mật khẩu',
+                minlength: 'Mật khẩu phải trên 5 ký tự'
+            }
+        },
+        submitHandler: function (form) {
+            var data = $(form).serializeObject();
+            root.signupError = '';
+            if (root.users[data.email]) {
+                root.signupError = 'Email này đã được sử dụng';
+                root.$apply();
+            }
+            else {
+                root.users[data.email] =  {
+                    "name": data.name,
+                    "avatar": "/img/user4.jpg",
+                    "email": data.email,
+                    "password": data.password
+                };
+                tempList.users.push(root.users[data.email]);
+                form.reset();
+                swal("Chúc mừng!", "Đăng ký thành công !\nBạn đã trở thành thành viên của nhuongve.vn", "success");
 
+            }
+            return false;
+
+        }
+    });
 });

@@ -2,7 +2,7 @@
 window.myApp.controller('PostTicketController', function ($scope, $state, $rootScope, initService) {
     var toastr = window.toastr;
     var vm = $scope;
-    $rootScope.user = $rootScope.user || 1;
+    // $rootScope.user = $rootScope.user || 1;
     /**
      * Plain js and jquery function
      */
@@ -10,10 +10,12 @@ window.myApp.controller('PostTicketController', function ($scope, $state, $rootS
         $('#ticketForm').validate({
             rules: {
                 from: {
-                    required: true
+                    required: true,
+                    minlength: 2
                 },
                 to: {
-                    required: true
+                    required: true,
+                    minlength: 2
                 },
                 passenger: {
                     required: true
@@ -25,7 +27,8 @@ window.myApp.controller('PostTicketController', function ($scope, $state, $rootS
                     required: true
                 },
                 carrier: {
-                    required: true
+                    required: true,
+                    minlength: 2
                 },
                 price: {
                     required: true
@@ -34,13 +37,15 @@ window.myApp.controller('PostTicketController', function ($scope, $state, $rootS
                     required:true
                 }
             },
-            ignore: ' ',
+            ignore: '',
             messages: {
                 from: {
-                    required: 'Vui lòng nhập điểm đi'
+                    required: 'Vui lòng nhập điểm đi',
+                    minlength: 'Vui lòng nhập điểm đi'
                 },
                 to: {
-                    required: 'Vui lòng nhập điểm đến'
+                    required: 'Vui lòng nhập điểm đến',
+                    minlength: 'Vui lòng nhập điểm đến'
                 },
                 passenger: {
                     required: 'Vui lòng nhập tên hành khách'
@@ -52,7 +57,8 @@ window.myApp.controller('PostTicketController', function ($scope, $state, $rootS
                     required: 'Vui lòng chọn loại vé'
                 },
                 carrier: {
-                    required: 'Vui lòng nhập hãng vận chuyển'
+                    required: 'Vui lòng nhập hãng vận chuyển',
+                    minlength: 'Vui lòng nhập hãng vận chuyển'
                 },
                 price: {
                     required: 'Vui lòng nhập giá',
@@ -63,8 +69,9 @@ window.myApp.controller('PostTicketController', function ($scope, $state, $rootS
                 }
             },
             submitHandler: function (form) {
-                console.log('helen');
-                console.log($(form).serializeObject());
+                console.log('Thong tin ve: ',$(form).serializeObject());
+                swal("Thành công !", "Vé của bạn đã được đăng", "success");
+
                 return false;
             }
         });
@@ -82,8 +89,12 @@ window.myApp.controller('PostTicketController', function ($scope, $state, $rootS
         d.setDate(d.getDate() + 1);
         rome(document.getElementById('beginDate'),{min:d});
         $('#carrier').select2({
-            placeholder: 'Chọn hãng xe',
+            placeholder: 'Nhập hãng xe',
             data: [
+                {
+                    id: '',
+                    text: ''
+                },
                 {
                     id: 'Phương Trang',
                     text: 'Phương Trang'
@@ -119,14 +130,21 @@ window.myApp.controller('PostTicketController', function ($scope, $state, $rootS
     }
     $rootScope.getData('locations')
         .then(function (locations) {
+            var data = [
+                {
+                    id:'',
+                    text:''
+                }
+            ];
+            data = data.concat(locations.map(function (city,idz) {
+                return {
+                    id: idz,
+                    text: city.name
+                }
+            }));
             $('.select2-locations').select2({
-                placeholder: 'Chọn điểm đi',
-                data: locations.map(function (city,idz) {
-                    return {
-                        id: idz,
-                        text: city.name
-                    }
-                })
+                placeholder: 'Chọn tỉnh/thành phố',
+                data:data
             });
         });
 });

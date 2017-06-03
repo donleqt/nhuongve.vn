@@ -22,7 +22,7 @@ myApp.controller('SearchController', function ($scope, $state, $rootScope, $http
     var doSearchAndFilter = function (condition) {
         condition = condition || {};
         vm.loading = true;
-        rvm.getData('tickets')
+        rvm.getData('tickets',1000)
             .then(function (tickets) {
                 /*Get filter*/
                 vm.results = tickets.filter(function (item,idz) {
@@ -109,6 +109,23 @@ myApp.controller('SearchController', function ($scope, $state, $rootScope, $http
     rvm.getData('locations')
         .then(function (list) {
             rvm.locations = list;
+            $rootScope.locations = list;
+            var data = [
+                {
+                    id:'all',
+                    text:'Tất cả'
+                }
+            ];
+            data = data.concat(list.map(function (city,idz) {
+                return {
+                    id: idz,
+                    text: city.name
+                }
+            }));
+            $('.select2-location2').select2({
+                placeholder: 'Chọn tỉnh/thành phố',
+                data:data
+            });
             if (!$state.params.condition) {
                 rvm.getData('tickets')
                     .then(function (tickets) {

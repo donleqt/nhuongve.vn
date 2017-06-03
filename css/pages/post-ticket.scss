@@ -16,8 +16,9 @@
             width: 160px;
         }
         .form-group {
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             display: table;
+            position: relative;
             > * {
                 display: table-cell;
                 vertical-align: middle;
